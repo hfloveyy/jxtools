@@ -1,0 +1,27 @@
+{% extends "header.html" %}
+
+{% block page_navbar %}
+    <div>
+    <ul class="nav nav-tabs" role="tablist" id="myTab">
+    <li role="presentation" class="active"><a href="/jgq" >减刑间隔期计算器</a></li>
+    <li role="presentation" ><a href="/cbfd">呈报幅度建议工具</a></li>
+    <li role="presentation"><a href="#" data-toggle="tab">减刑细则速查</a></li>
+    <li role="presentation"><a href="#" data-toggle="tab">减刑摸底排查工具</a></li>
+    <li role="presentation"><a href="#" data-toggle="tab">常用问题集</a></li>
+    </ul>
+    </div>
+
+{% endblock %}
+
+
+{% block container%}
+
+  <h1>减刑间隔期计算</h1>
+    <form method="POST" action="/jgq/calc">
+    {{ form.hidden_tag() }}
+    {{ form.name.label }} {{ form.name(size=20) }}
+    <input type="submit" value="Go">
+    </form>
+    <h1>减刑间隔期{{ jgq }}</h1>
+
+{% endblock %}
