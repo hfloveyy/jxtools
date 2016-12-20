@@ -19,9 +19,16 @@
   <h1>减刑间隔期计算</h1>
     <form method="POST" action="/jgq/calc">
     {{ form.hidden_tag() }}
-    {{ form.name.label }} {{ form.name(size=20) }}
-    <input type="submit" value="Go">
+        罪名{{ form.zuiming(size=20) }}
+        原判刑期{{ form.yuanpanxingqi(size=20) }}
+        呈报日期{{ form.chengbaodate(size=20) }}
+        起始时间{{ form.qishishijian(size=20) }}
+        上次减刑幅度{{ form.shangcijxfd(size=20) }}
+        减刑起始时间{{ form.jxqishishijian(size=20) }}
+        立功{{ form.ligong(size=20) }}
+        重大立功{{ form.zhongdaligong(size=20) }}
+        <input type="submit" value="计算">
     </form>
-    <h1>减刑间隔期{{ jgq }}</h1>
+    <h1>{{ str }}</h1>
 
 {% endblock %}
