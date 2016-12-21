@@ -15,20 +15,107 @@
 
 
 {% block container%}
+    <div>
+    <h3><span class="label label-primary">方法一：</span></h3>
+    <div class="jumbotron">
+        <h4>使用说明：</h4>
+        <p>输入服刑人员以下基本信息，计算服刑人员呈报减刑间隔期是否符合</p>
+    </div>
 
-  <h1>减刑间隔期计算</h1>
-    <form method="POST" action="/jgq/calc">
+    <form method="POST" action="/jgq/calc" class="form-horizontal">
     {{ form.hidden_tag() }}
-        罪名{{ form.zuiming(size=20) }}
-        原判刑期{{ form.yuanpanxingqi(size=20) }}
-        呈报日期{{ form.chengbaodate(size=20) }}
-        起始时间{{ form.qishishijian(size=20) }}
-        上次减刑幅度{{ form.shangcijxfd(size=20) }}
-        减刑起始时间{{ form.jxqishishijian(size=20) }}
-        立功{{ form.ligong(size=20) }}
-        重大立功{{ form.zhongdaligong(size=20) }}
-        <input type="submit" value="计算">
-    </form>
-    <h1>{{ str }}</h1>
+        <dd>
+        <div class="form-group">
+            <label for="text" class="col-sm-2 control-label">罪名：</label>
+            <div class="col-sm-2">
+            <input type="text" class="form-control" id="text" name="zuiming"
+                placeholder="请输入罪名">
+            </div>
+        </div>
+            <dd>
+        <div class="form-group">
+            <label for="text" class="col-sm-2 control-label">原判刑期：</label>
+            <div class="col-sm-2">
+            <input type="text" class="form-control" id="text" name="yuanpanxingqi"
+                placeholder="格式为19990101">
+            </div>
+        </div>
+        <dd>
+        <div class="form-group">
+            <label for="text" class="col-sm-2 control-label">呈报日期：</label>
+            <div class="col-sm-2">
+            <input type="text" class="form-control" id="text" name="chengbaodate"
+                placeholder="格式为19990101">
+            </div>
+        </div>
+        <dd>
+        <div class="form-group">
+            <label for="text" class="col-sm-2 control-label">起始时间：</label>
+            <div class="col-sm-2">
+            <input type="text" class="form-control" id="text" name="qishishijian"
+                placeholder="格式为19990101">
+            </div>
+        </div>
+        <dd>
+        <div class="form-group">
+            <label for="text" class="col-sm-2 control-label">上次减刑幅度：</label>
+            <div class="col-sm-2">
+            <input type="text" class="form-control" id="text" name="shangcijxfd"
+                placeholder="0.6代表减6个月 1代表减1年">
+            </div>
+        </div>
+        <dd>
+        <div class="form-group">
+            <label for="text" class="col-sm-2 control-label">减刑起始时间：</label>
+            <div class="col-sm-2">
+            <input type="text" class="form-control" id="text" name="jxqishishijian"
+                placeholder="格式为19990101">
+            </div>
+        </div>
+        <dd>
+        <div class="form-group">
+            <label for="text" class="col-sm-2 control-label">立功：</label>
+            <div class="col-sm-2">
+            <input type="text" class="form-control" id="text" name="ligong"
+                placeholder="格式为1代表有，0代表无">
+            </div>
+        </div>
+        <dd>
+        <div class="form-group">
+            <label for="text" class="col-sm-2 control-label">重大立功：</label>
+            <div class="col-sm-2">
+            <input type="text" class="form-control" id="text" name="zhongdaligong"
+                placeholder="格式为1代表有，0代表无">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-info">计算间隔期</button>
+            </div>
+        </div>
 
+    </form>
+    {% if flag %}
+        <h3><div class="alert alert-success" role="alert">{{ str }}</div></h3>
+    {% else %}
+        <h3><div class="alert alert-danger" role="alert">{{ str }}</div></h3>
+    {% endif %}
+</div>
+
+
+    <div>
+    <h3><span class="label label-primary">方法二：</span></h3>
+    <div class="jumbotron">
+        <h4>使用说明：</h4>
+        <p>下载样式表格，按要求填写后上传，批量计算服刑人员呈报减刑间隔期是否符合</p>
+    </div>
+    </div>
+
+
+    <h3><span class="label label-primary">方法三：</span></h3>
+    <div class="jumbotron">
+        <h4>使用说明（需连接网威平台数据库）：</h4>
+        <p>查询本监区全部服刑人员，批量计算本监区服刑人员呈报减刑间隔期是否符合</p>
+    </div>
+    </div>
 {% endblock %}

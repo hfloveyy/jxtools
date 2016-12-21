@@ -12,6 +12,8 @@ def index():
 
 @jgq.route('/calc', methods = ['GET', 'POST'])
 def jgq_calc():
+    str = None
+    flag = False
     jgq = '2年'
     form = JgqForm()
     if form.validate_on_submit():
@@ -35,4 +37,4 @@ def jgq_calc():
         else:
             str = '服刑人员间隔期未过，不能呈报减刑！'
 
-    return render_template('jgq.html', form=form, str = str)
+    return render_template('jgq.html', form=form, str = str,flag = flag)
