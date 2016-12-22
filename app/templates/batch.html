@@ -1,0 +1,82 @@
+{% extends "header.html" %}
+{% block page_navbar %}
+    <div>
+    <ul class="nav nav-tabs" role="tablist" id="myTab">
+    <li role="presentation" class="active"><a href="/jgq" >减刑间隔期计算器</a></li>
+    <li role="presentation" ><a href="/cbfd">呈报幅度建议工具</a></li>
+    <li role="presentation"><a href="#" data-toggle="tab">减刑细则速查</a></li>
+    <li role="presentation"><a href="#" data-toggle="tab">减刑摸底排查工具</a></li>
+    <li role="presentation"><a href="#" data-toggle="tab">常用问题集</a></li>
+    </ul>
+    </div>
+
+{% endblock %}
+
+{% block container%}
+<div>
+    <h3><span class="label label-primary">方法二：</span></h3>
+    <div class="jumbotron">
+        <h4>使用说明：</h4>
+        <p>下载表格模板，按要求填写后上传，批量计算服刑人员呈报减刑间隔期是否符合</p>
+        <p><a class="btn btn-primary btn-lg" href="{{ url_for('jgq.download_template') }}" role="button">下载表格模板</a></p>
+    </div>
+    <h4><span class="label label-primary">请选择文件,文件格式为xls、xlsx：</span></h4>
+    <form id="form1" method="post" action="/jgq/api/upload" enctype="multipart/form-data">
+    <div>
+        <input id="File1" type="file" name="myfile"/>
+        <button type="submit" class="btn btn-info">提交</button>
+    </div>
+
+    </form>
+    {% if fileupload %}
+        <h3><div class="alert alert-success" role="alert">{{ str }}</div></h3>
+    {% else %}
+        <h3><div class="alert alert-danger" role="alert">{{ str }}</div></h3>
+    {% endif %}
+</div>
+<div class="panel panel-default">
+<div class="panel-body">
+<table class="table table-bordered" align="center" valign="middle">
+   <caption ><h2>间隔期</h2></caption>
+   <thead>
+      <tr>
+
+         <th>姓名</th>
+         <th>罪名</th>
+         <th>原判刑期</th>
+         <th>呈报日期</th>
+         <th>起始时间</th>
+         <th>上次减刑幅度</th>
+         <th>上次减刑起始时间</th>
+          <th>立功</th>
+         <th>重大立功</th>
+         <th>是否符合间隔期</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+      {% for row in data%}
+
+          {% if '已过' in row[9] %}
+          <tr class="alert-success">
+          {% else  %}
+          <tr class="alert-danger">
+          {% endif %}
+          {% for one in row %}
+              <td>{{ one }}</td>
+          {% endfor %}
+          </tr>
+      {% endfor%}
+      </tr>
+
+
+
+   </tbody>
+
+</table>
+</div>
+    <div class="btn-group" style="float: right">
+        <p><a class="btn btn-primary btn-lg" href="{{ url_for('jgq.download_jgq') }}" role="button">下载文档</a></p>
+    </div>
+</div>
+{% endblock %}

@@ -21,7 +21,7 @@ class Prisoner:
     #计算间隔时间
     def calc(self):
         #print('Prisoner')
-        if self.zhongdaligong == 1:
+        if self.zhongdaligong > 0:
             self.flag = True
             return self.flag
         if self.shangcijxfd > 0:

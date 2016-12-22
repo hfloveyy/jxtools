@@ -37,7 +37,7 @@
             <label for="text" class="col-sm-2 control-label">原判刑期：</label>
             <div class="col-sm-2">
             <input type="text" class="form-control" id="text" name="yuanpanxingqi"
-                placeholder="格式为19990101">
+                placeholder="格式为数字或无期、死缓">
             </div>
         </div>
         <dd>
@@ -107,8 +107,16 @@
     <h3><span class="label label-primary">方法二：</span></h3>
     <div class="jumbotron">
         <h4>使用说明：</h4>
-        <p>下载样式表格，按要求填写后上传，批量计算服刑人员呈报减刑间隔期是否符合</p>
+        <p>下载表格模板，按要求填写后上传，批量计算服刑人员呈报减刑间隔期是否符合</p>
+        <p><a class="btn btn-primary btn-lg" href="{{ url_for('jgq.download_template') }}" role="button">下载表格模板</a></p>
     </div>
+        <h4><span class="label label-primary">请选择文件,文件格式为xls、xlsx：</span></h4>
+    <form id="form1" method="post" action="/jgq/api/upload" enctype="multipart/form-data">
+    <div>
+        <input id="File1" type="file" name="myfile"/>
+        <button type="submit" class="btn btn-info">提交</button>
+    </div>
+    </form>
     </div>
 
 
