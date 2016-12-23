@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, make_response, send_file, request, jsonify
+from flask import Blueprint, render_template, make_response, send_file, request
 from werkzeug.utils import secure_filename
 import os
 import time
@@ -129,6 +129,7 @@ def api_upload():
     else:
         return render_template('batch.html', fileupload = file_upload, str = file_str)
         #return jsonify({"errno": 1001, "errmsg": "上传失败"})
+
 
 
 

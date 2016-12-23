@@ -5,5 +5,5 @@ cbfd = Blueprint('cbfd', __name__, url_prefix='/cbfd')
 
 @cbfd.route('/')
 def index():
-    user = 'bb'
+    user = 'test'
     return render_template('cbfd.html',user = user)

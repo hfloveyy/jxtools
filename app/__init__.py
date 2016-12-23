@@ -1,8 +1,9 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template, redirect, url_for
 from flask_bootstrap3 import Bootstrap
 from .views.jgq import jgq
 from .views.cbfd import cbfd
+from .views.rules import rules
 import linecache
 import random
 import os
@@ -13,12 +14,14 @@ app.config.from_object('config')
 bootstrap = Bootstrap(app)
 app.register_blueprint(jgq)
 app.register_blueprint(cbfd)
+app.register_blueprint(rules)
 
 
 #from . import indexview
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return redirect('/jgq')
+    #return render_template('jgq.html')
 
 @app.route('/about')
 def about():
